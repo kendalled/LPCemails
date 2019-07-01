@@ -1,0 +1,99 @@
+/* Start contact box */
+.boxy {
+  color: white;
+  max-width: 51em;
+  height: 13em;
+  background: linear-gradient(#ff9e18, #ef6c00);
+  position: relative;
+  overflow: hidden;
+  margin: 1.5em auto;
+  font-family: 'Google Sans';
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 6px;
+}
+.boxy .left {
+  padding: 3em;
+  height: 100%;
+  width: 100%;
+}
+.boxy .left h2 {
+	color: #fff;
+  margin: 0;
+  font-weight: 700;
+  text-transform: none;
+}
+.boxy .left p {
+  font-size: 1.1em;
+  width: 18em;
+  margin: 0;
+}
+.boxy .right {
+  height: 100%;
+  width: 100%;
+  background: #002d5d;
+  position: absolute;
+  top: 0;
+  left: 28em;
+  transition: 0.5s;
+}
+.boxy .right::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 13em 3em 0 0;
+  border-color: transparent #002d5d transparent transparent;
+  left: -3em;
+  top: 0;
+  position: absolute;
+}
+.boxy .right:hover {
+  transition: 0.5s;
+  transform: translateX(-28em);
+}
+.boxy .right:hover a {
+  transition: 0.5s;
+  transform: translateX(0) scale(1.5);
+}
+.boxy .right:hover a::before {
+  width: 4.25em;
+}
+.boxy .right a {
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  display: block;
+  font-size: 2.0rem;
+  transform: translateX(-6.75em);
+  transition: 0.5s;
+  position: relative;
+  line-height: 6.5em;
+  text-transform: none;
+  letter-spacing: 1.5px;
+}
+.boxy .right a::after {
+  content: '';
+  height: 0.09em;
+  position: absolute;
+  background: white;
+  bottom: 4em;
+  left: 9.75em;
+  transition: 0.5s;
+  width: 0;
+}
+.boxy .right a::before {
+  content: '';
+  height: 0.1em;
+  width: 0;
+  position: absolute;
+  background: white;
+  bottom: 2.5em;
+  transition: 0.5s;
+}
+.boxy .right a:hover::before, .right a:hover::after {
+  width: 6em;
+  transition: 0.5s;
+}
+
+/* end contact box */

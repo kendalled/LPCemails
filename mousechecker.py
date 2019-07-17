@@ -5,7 +5,7 @@ urls = ['https://www.nyrestaurantcatskill.com/contact','https://lapelpinsandcoin
 # Adding new websites
 urls.append('www.sunstateford.com')
 urls.append('https://www.tuffymetrowest.com/')
-
+urls.append('https://escapetheroom.com/new-york/?utm_source=GMBlisting&utm_medium=organic')
 
 
 for i in range(len(urls)):

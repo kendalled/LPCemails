@@ -140,13 +140,13 @@ if __name__=="__main__":
             emails.append(None)
             continue
         else:
-            
+
             res = clipboard.paste()[0:clipboard.paste().find('.')+4]
             print(res)
 
             emails.append(res)
-            
-       
+
+
         # Rinse & Repeat
         pgui.click(1241, 53)
         time.sleep(0.15)
@@ -157,9 +157,9 @@ if __name__=="__main__":
     for ig in real_results:
         if(ig['email'] != None):
             end_results.append(ig)
-        
-        
-  
+
+
+
 
     print(end_results)
 
@@ -172,7 +172,7 @@ if __name__=="__main__":
             writer.writeheader()
             for data in end_results:
                 writer.writerow(data)
-            
+
 
 
 

@@ -1,4 +1,7 @@
 # Kendall Jackson MIT License
+# GetScraped Private v1
+#parse_listing from https://github.com/scrapehero/yellowpages-scraper
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pyautogui as pgui

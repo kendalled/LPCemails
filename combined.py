@@ -1,3 +1,4 @@
+# Kendall Jackson MIT License
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pyautogui as pgui
@@ -112,7 +113,7 @@ if __name__=="__main__":
 	    time.sleep(0.25)
 
 	    pgui.press('\n')
-	    time.sleep(3.25)
+	    time.sleep(6.00)
 
 	    # Click extension
 	    pgui.click(2464, 82)

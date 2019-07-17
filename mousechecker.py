@@ -20,7 +20,7 @@ for i in range(len(urls)):
 
     pgui.press('\n')
     time.sleep(3.25)
-    
+
     # Click extension
     pgui.click(2464, 82)
     time.sleep(.75)

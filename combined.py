@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import pyautogui as pgui
+import time
 import requests
 from lxml import html
 import unicodecsv as csv
@@ -66,7 +67,8 @@ def parse_listing(keyword,place):
 
 					}
 					scraped_results.append(business_details)
-					print(scraped_results)
+
+				#print(scraped_results)
 				return scraped_results
 
 			elif response.status_code==404:
@@ -93,11 +95,43 @@ if __name__=="__main__":
 	place = args.place
 	scraped_data =  parse_listing(keyword,place)
 
-	if scraped_data:
-		print("Writing scraped data to %s-%s-yellowpages-scraped-data.csv"%(keyword,place))
-		with open('%s-%s-yellowpages-scraped-data.csv'%(keyword,place),'wb') as csvfile:
-			fieldnames = ['business_name','website']
-			writer = csv.DictWriter(csvfile,fieldnames = fieldnames,quoting=csv.QUOTE_ALL)
-			writer.writeheader()
-			for data in scraped_data:
-				writer.writerow(data)
+	urls = []
+
+	for j in range(len(scraped_data)):
+		if(scraped_data[j].get('website') != None):
+			urls.append(scraped_data[j].get('website'))
+
+	for i in range(len(urls)):
+
+	    # Click url bar
+	    pgui.click(1358,93)
+	    time.sleep(.55)
+
+	    # typewrite url
+	    pgui.typewrite(urls[i])
+	    time.sleep(0.25)
+
+	    pgui.press('\n')
+	    time.sleep(3.25)
+
+	    # Click extension
+	    pgui.click(2464, 82)
+	    time.sleep(.75)
+	    # Click copy all
+	    pgui.click(2423, 197)
+	    time.sleep(0.25)
+	    # Ctrl-tab to docs
+	    pgui.hotkey('ctrl', 'tab')
+	    time.sleep(0.5)
+	    #tab in
+	    pgui.press('tab')
+	    time.sleep(0.25)
+	    # Paste it
+	    pgui.hotkey('command', 'v')
+	    time.sleep(0.25)
+	    # Rinse & Repeat
+	    pgui.click(1241, 53)
+	    time.sleep(0.15)
+
+
+	print('Done! check the google doc.')

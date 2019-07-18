@@ -261,13 +261,13 @@ def runtime(word, place):
 
         # Click extension
 
-        pgui.click(1819, 54)
+        pgui.click(1582, 61)
 
         time.sleep(.75)
 
         # Click copy all
 
-        pgui.click(1780, 169)
+        pgui.click(1541, 179)
 
         time.sleep(0.5)
 

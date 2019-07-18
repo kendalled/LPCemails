@@ -9,7 +9,7 @@ import time
 import requests
 from lxml import html
 import unicodecsv as csv
-import argparse
+#import argparse
 import clipboard
 
 clipboard.copy('')

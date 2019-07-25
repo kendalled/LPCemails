@@ -226,7 +226,7 @@ def runtime(word, place):
 
         with open('%s-%s-yellowpages-scraped-links.csv'%(keyword,place),'wb') as csvfile:
 
-            fieldnames = ['business', 'website']
+            fieldnames = ['business_name', 'website']
 
             writer = csv.DictWriter(csvfile,fieldnames = fieldnames,quoting=csv.QUOTE_ALL)
 

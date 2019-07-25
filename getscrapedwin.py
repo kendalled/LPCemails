@@ -151,8 +151,8 @@ def parse_listing(keyword,place):
 
 
                     }
-
-                    scraped_results.append(business_details)
+                    if(website != '' or website != None):
+                        scraped_results.append(business_details)
 
 
 
@@ -196,7 +196,7 @@ def runtime(word, place):
 
 
 
-    
+
 
     keyword = word
 
@@ -206,15 +206,15 @@ def runtime(word, place):
 
 
 
-   
-
-
-    
 
 
 
 
-   
+
+
+
+
+
 
 
 
@@ -246,7 +246,7 @@ def runtime(word, place):
 
 
 
-    print('Starting next category! Got ' + str(counter) + ' from that one.')
+    print('Starting next category!')
 
 
 

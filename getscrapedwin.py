@@ -196,7 +196,7 @@ def runtime(word, place):
 
 
 
-    counter = 0
+    
 
     keyword = word
 
@@ -206,129 +206,15 @@ def runtime(word, place):
 
 
 
-    urls = []
+   
 
-    emails = []
 
-    res = ''
+    
 
-    real_results = []
 
-    end_results = []
 
 
-
-    for j in range(len(scraped_data)):
-
-        if(scraped_data[j].get('website') != None):
-
-            urls.append(scraped_data[j].get('website'))
-
-            details = {
-
-                'business': scraped_data[j].get('business_name'),
-
-                'email': ''
-
-                }
-
-            real_results.append(details)
-
-    for i in range(len(urls)):
-
-
-
-        # Click url bar
-
-        pgui.click(512,52)
-
-        time.sleep(.25)
-
-        pgui.hotkey('ctrl', 'a')
-
-
-
-        # typewrite url
-
-        pgui.typewrite(urls[i])
-
-        time.sleep(0.25)
-
-
-
-        pgui.press('\n')
-
-        time.sleep(5.00)
-
-
-
-        # Click extension
-
-        pgui.click(1819, 54)
-
-        time.sleep(.75)
-
-        # Click copy all
-
-        pgui.click(1780, 169)
-
-        time.sleep(0.5)
-
-        if(clipboard.paste()[0:clipboard.paste().find('.')+4] == res):
-
-            emails.append(None)
-
-            continue
-
-        else:
-
-
-
-            res = clipboard.paste()[0:clipboard.paste().find('.')+4]
-
-            print(res)
-
-            counter += 1
-
-            print(counter)
-
-
-
-            emails.append(res)
-
-
-
-
-
-        # Rinse & Repeat
-
-        pgui.click(1241, 53)
-
-        time.sleep(0.15)
-
-
-
-    for ind, email in enumerate(emails):
-
-        real_results[ind]['email'] = email
-
-
-
-    for ig in real_results:
-
-        if(ig['email'] != None):
-
-            end_results.append(ig)
-
-
-
-
-
-
-
-
-
-    print(end_results)
+   
 
 
 
@@ -336,17 +222,17 @@ def runtime(word, place):
 
     if scraped_data:
 
-        print("Writing scraped data to %s-%s-yellowpages-scraped-emailsFINAL.csv"%(keyword,place))
+        print("Writing scraped data to %s-%s-yellowpages-scraped-links.csv"%(keyword,place))
 
-        with open('%s-%s-yellowpages-scraped-emailsFINAL.csv'%(keyword,place),'wb') as csvfile:
+        with open('%s-%s-yellowpages-scraped-links.csv'%(keyword,place),'wb') as csvfile:
 
-            fieldnames = ['business', 'email']
+            fieldnames = ['business', 'website']
 
             writer = csv.DictWriter(csvfile,fieldnames = fieldnames,quoting=csv.QUOTE_ALL)
 
             writer.writeheader()
 
-            for data in end_results:
+            for data in scraped_data:
 
                 writer.writerow(data)
 

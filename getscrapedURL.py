@@ -4,15 +4,9 @@
 
 #parse_listing from https://github.com/scrapehero/yellowpages-scraper
 
-
-
 #!/usr/bin/env python
 
 # -*- coding: utf-8 -*-
-
-
-
-
 
 import requests
 
@@ -22,8 +16,7 @@ import unicodecsv as csv
 
 #import argparse
 
-
-
+final_list = []
 
 state = 'FL'
 
@@ -130,15 +123,6 @@ def parse_listing(keyword,place):
                     website = ''.join(raw_website).strip() if raw_website else None
 
 
-
-
-
-
-
-
-
-
-
                     business_details = {
 
                                         'business_name':business_name,
@@ -151,11 +135,7 @@ def parse_listing(keyword,place):
 
                                         'city': city,
 
-                                        'state': 'AL'
-
-
-
-
+                                        'state': 'FL'
 
 
                     }
@@ -198,64 +178,17 @@ def parse_listing(keyword,place):
 
 def runtime(word, place):
 
-
-
-
-
-
-
-
-
     keyword = word
 
     place = place
 
     scraped_data =  parse_listing(keyword,place)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if scraped_data:
-
-        print("Writing scraped data to %s-%s-yellowpages-scraped-links.csv"%(keyword,place))
-
-        with open('%s-%s-yellowpages-scraped-links.csv'%(keyword,place),'wb') as csvfile:
-
-            fieldnames = ['business_name', 'website', 'industry', 'city', 'state']
-
-            writer = csv.DictWriter(csvfile,fieldnames = fieldnames,quoting=csv.QUOTE_ALL)
-
-            writer.writeheader()
-
-            for data in scraped_data:
-
-                writer.writerow(data)
-
-
-
-
-
-
-
-
-
-
-
-    print('Starting next category!')
-
+    
+    if(scraped_data):
+        return scraped_data
+    
+    else:
+        return []
 
 
 if __name__=="__main__":
@@ -265,10 +198,26 @@ if __name__=="__main__":
     for city in cities:
 
         for elem in categories:
+            
+            final_list.append(runtime(elem, city + ',' + state))
 
-            runtime(elem, city + ',' + state)
+        print('STARTING FILE WRITE')
 
-        print('STARTING NEW CITY')
+        print("Writing scraped data to %s-%s-yellowpages-scraped-links.csv"%(city, state))
+        
+        
+        with open('%s-%s-yellowpages-scraped-links.csv'%(city,state),'ab') as csvfile:
+            fieldnames = ['business_name', 'website', 'industry', 'city', 'state']
+        
+            writer = csv.DictWriter(csvfile, fieldnames = fieldnames, quoting=csv.QUOTE_ALL)
+        
+            writer.writeheader()
+
+            for data in final_list:
+                for keys in data:
+                    writer.writerow(keys)
+       
+ 
 
 
 
